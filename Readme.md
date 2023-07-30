@@ -2,6 +2,9 @@
 
 Just get the latest version of your favourite database system!
 
+![Accept Pylar AI Creative ML Free License Screen](https://github.com/miguelgargallo/get-pocketbase-server/assets/5947268/bc8143ae-c827-498b-a340-e8c4cd736494)
+Accept Pylar AI Creative ML Free License Screen
+
 ![Pocketbase Downloader Initial screen](https://github.com/miguelgargallo/get-pocketbase-server/assets/5947268/8b6720d7-4f60-46f2-b99a-068554c850b5)
 Pocketbase Downloader Initial screen
 

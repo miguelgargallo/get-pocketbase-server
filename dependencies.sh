@@ -40,6 +40,3 @@ ask_and_install() {
 ask_and_install wget 'sudo apt-get install wget'
 ask_and_install unzip 'sudo apt-get install unzip'
 ask_and_install git 'sudo apt-get install git'
-
-# Check the version of miguelgargallo/get-pocketbase-server in file v.pylar
-# TODO: Add your version checking logic here

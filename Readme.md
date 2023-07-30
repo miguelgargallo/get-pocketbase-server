@@ -1,4 +1,4 @@
-# Pocketbase Downloader
+# Pocketbase Downloader.
 
 Just get the latest version of your favourite database system!
 

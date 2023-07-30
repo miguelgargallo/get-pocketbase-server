@@ -40,3 +40,16 @@ if [ ! -f $file_name ]; then
 fi
 
 echo "Download successful: $file_name"
+
+# Unzip the downloaded file
+unzip -q $file_name
+
+# Remove CHANGELOG.md and LICENSE.md
+rm CHANGELOG.md LICENSE.md
+
+# Copy "pocketbase" into a folder with MMDDYYHHMMam/pm
+mkdir -p $(date +%m%d%y%I%M%p)
+cp pocketbase $(date +%m%d%y%I%M%p)
+
+# Remove the downloaded file
+rm $file_name pocketbase

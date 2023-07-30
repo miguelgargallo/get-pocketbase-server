@@ -6,15 +6,14 @@ install_commands=("sudo apt-get install" "sudo pacman -Sy" "sudo dnf install" "s
 
 # Detect distro and install dependencies
 for dependency in "${dependencies[@]}"; do
-    if ! [ -x "$(command -v $dependency)" ]; then
-        for install_command in "${install_commands[@]}"; do
-            if $install_command $dependency >/dev/null 2>&1; then
-                break
-            fi
-        done
-    fi
+  if ! [ -x "$(command -v $dependency)" ]; then
+    for install_command in "${install_commands[@]}"; do
+      if $install_command $dependency >/dev/null 2>&1; then
+        break
+      fi
+    done
+  fi
 done
-
 
 REPO="pocketbase/pocketbase"
 API_URL="https://api.github.com/repos/$REPO/releases"
@@ -82,8 +81,11 @@ file_name=$(basename $download_url)
 
 # Download the chosen asset into $actual_version/$file_name
 dialog --title "Downloading" --infobox "Downloading $file_name for version $actual_version..." 10 60
+
+# Create if not a folder with $actual_version/$(date +%mm-$dd-%yy_%H-%M-%S)
+mkdir -p "./pb/$actual_version/$(date +%m-%d-%y_%H-%M-%S)"
+cd "./pb/$actual_version/$(date +%m-%d-%y_%H-%M-%S)"
 wget -q --show-progress $download_url
-cp $file_name "./pb/$actual_version"
 
 # Check if file was downloaded
 if [ ! -f $file_name ]; then
@@ -91,8 +93,8 @@ if [ ! -f $file_name ]; then
   exit 1
 fi
 
-dialog --title "Success" --msgbox "Download successful: $file_name" 10 60
-
+# unzip with bar progress
+dialog --title "Unzipping" --infobox "Unzipping $file_name..." 10 60
 # Unzip the downloaded file
 unzip -q $file_name && rm CHANGELOG.md LICENSE.md
 
@@ -100,6 +102,9 @@ unzip -q $file_name && rm CHANGELOG.md LICENSE.md
 actual_file=$(unzip -l $file_name | awk '/inflating:/{print $NF}')
 
 # Remove the downloaded file
-rm $file_name
+rm $file_name && cd ../../..
+
+# Remove the unzipped folder
+rm -rf $actual_file
 
 dialog --title "Success" --msgbox "PocketBase successfully downloaded to: ./pb/$actual_version" 10 60

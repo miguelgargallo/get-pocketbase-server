@@ -15,7 +15,7 @@ chmod +x app.sh && ./app.sh
 ![Alt text](./assets/02_screen.png)
 
 # Screen 3, Success!
-![Alt text](./assets/02_screen.png)
+![Alt text](./assets/03_screen.png)
 
 # License
 Read the Pylar AI Creative ML Free License before use or anything else. Read on the Official HuggingFace source [Pylar AI Creative ML Free License](https://huggingface.co/spaces/superdatas/free-license) or the [LICENSE](License.md) file.

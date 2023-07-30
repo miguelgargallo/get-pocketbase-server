@@ -9,11 +9,11 @@ chmod +x Dependencies.sh
 ./Dependencies.sh
 
 # Show the user to agree to the license
-dialog --title "License" --yesno "Do you agree to the PocketBase license?" 10 60
+dialog --title "License" --yesno "Do you agree to the Pylar AI Creative ML Free License?" 10 60
 
 # Check if the user agreed to the license
 if [ $? -ne 0 ]; then
-  dialog --title "Error" --msgbox "You must agree to the license to use PocketBase" 10 60
+  dialog --title "Error" --msgbox "You must agree to the Pylar AI Creative ML Free License to use PocketBase" 10 60
   exit 1
 fi
 

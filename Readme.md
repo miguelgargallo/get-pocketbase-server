@@ -2,7 +2,13 @@
 
 Just get the latest version of your favourite database system!
 
-- [Pocketbase Downloader.](#pocketbase-downloader)
+First run
+
+```bash
+chmod +x app.sh && ./app.sh
+```
+
+- [Get Pocketbase Server.](#Get Pocketbase Server)
   - [Installation](#installation)
   - [Usage](#usage)
     - [Accept the License](#accept-the-license)
@@ -13,17 +19,27 @@ Just get the latest version of your favourite database system!
     - [Version Manager](#version-manager)
   - [License](#license)
 
+```md
+.
+├── 0730230927PM <- Example version folder
+├── License.md
+├── Readme.md
+├── app.sh
+└── components
+    ├── dependencies.sh
+    ├── downloader.sh
+    └── version.sh
+
+Directories: 2, Files: 6
+```
+
 ## Accept the License
 Accept Pylar AI Creative ML Free License Screen
 ![Accept Pylar AI Creative ML Free License Screen](https://github.com/miguelgargallo/get-pocketbase-server/assets/5947268/bc8143ae-c827-498b-a340-e8c4cd736494)
 
-## Download a version
-Pocketbase Downloader Initial screen
-![Pocketbase Downloader Initial screen](https://github.com/miguelgargallo/get-pocketbase-server/assets/5947268/8b6720d7-4f60-46f2-b99a-068554c850b5)
-
-## Select a version
-Pocketbase Downloader Choosing a version
-![image](https://github.com/miguelgargallo/get-pocketbase-server/assets/5947268/3020ab9d-3693-484a-8956-ea4cf8ff6721)
+## Select Version
+Pocketbase Downloader Select Version
+![Pocketbase Downloader Select Version](./assets/002-Selector.png)
 
 ### Downloading Version
 Pocketbase Downloader Downloading Version

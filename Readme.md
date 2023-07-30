@@ -8,20 +8,14 @@ First run
 chmod +x app.sh && ./app.sh
 ```
 
-## Screen 1, License
-![Alt text](./assets/image.png)
+## Screen 1, Pocketbase Version Manager
+![Alt text](./assets/01_screen.png)
 
-## Screen 2, Pocketbase Version Manager
-![Alt text](./assets/image-1.png)
+## Screen 2, Pocketbase Downloading
+![Alt text](./assets/02_screen.png)
 
-## Screen 3, Pocketbase Downloading
-![Alt text](./assets/image-2.png)
-
-## Screen 3, Pocketbase Unzipping
-
-
-# Screen 4, Success!
-![Alt text](./assets/image-3.png)
+# Screen 3, Success!
+![Alt text](./assets/03_screen.png)
 
 # License
 Read the Pylar AI Creative ML Free License before use or anything else. Read on the Official HuggingFace source [Pylar AI Creative ML Free License](https://huggingface.co/spaces/superdatas/free-license) or the [LICENSE](License.md) file.

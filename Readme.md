@@ -1,4 +1,4 @@
-# Pocketbase Downloader.
+# Get Pocketbase Server
 
 Just get the latest version of your favourite database system!
 

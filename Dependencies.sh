@@ -1,54 +1,45 @@
-# Print line to ask to install dialog, then user accept by detecting if arch, ubuntu, debian, fedora, centos
-
-# Ask the user print line if dialog is not installed
-if ! [ -x "$(command -v dialog)" ]; then
-    echo 'Error: dialog is not installed.' >&2
-    echo 'Please install dialog to continue' >&2
-fi
+#!/bin/bash
 
 # Detect distro and install dialog
-if [ -x "$(command -v pacman)" ]; then
-    sudo pacman -S dialog
-elif [ -x "$(command -v apt-get)" ]; then
-    sudo apt-get install dialog
-elif [ -x "$(command -v dnf)" ]; then
-    sudo dnf install dialog
-elif [ -x "$(command -v yum)" ]; then
-    sudo yum install dialog
-else
-    echo 'Error: Could not detect distro.' >&2
-    echo 'Please install dialog to continue' >&2
+if ! [ -x "$(command -v dialog)" ]; then
+    echo "Dialog is not installed, installing..."
+
+    if [ -x "$(command -v pacman)" ]; then
+        sudo pacman -Sy dialog
+    elif [ -x "$(command -v apt-get)" ]; then
+        sudo apt-get update
+        sudo apt-get install dialog
+    elif [ -x "$(command -v dnf)" ]; then
+        sudo dnf install dialog
+    elif [ -x "$(command -v yum)" ]; then
+        sudo yum install dialog
+    else
+        echo 'Error: Could not detect distro.' >&2
+        echo 'Please install dialog to continue' >&2
+        exit 1
+    fi
 fi
+
+# Define a function to ask and install a package
+ask_and_install() {
+    local package=$1
+    local install_command=$2
+
+    if ! [ -x "$(command -v $package)" ]; then
+        dialog --title "Install $package" --yesno "$package is not installed, do you want to install it?" 7 60
+        response=$?
+        case $response in
+            0) eval $install_command;;
+            1) echo "$package will not be installed.";;
+            255) echo "[ESC] key pressed.";;
+        esac
+    fi
+}
 
 # Now with dialog installed, we can continue to ask and install wget, unzip and git
-if ! [ -x "$(command -v wget)" ]; then
-    dialog --title "Install wget" --yesno "wget is not installed, do you want to install it?" 7 60
-    response=$?
-    case $response in
-        0) sudo apt-get install wget;;
-        1) echo "wget will not be installed.";;
-        255) echo "[ESC] key pressed.";;
-    esac
-fi
+ask_and_install wget 'sudo apt-get install wget'
+ask_and_install unzip 'sudo apt-get install unzip'
+ask_and_install git 'sudo apt-get install git'
 
-if ! [ -x "$(command -v unzip)" ]; then
-    dialog --title "Install unzip" --yesno "unzip is not installed, do you want to install it?" 7 60
-    response=$?
-    case $response in
-        0) sudo apt-get install unzip;;
-        1) echo "unzip will not be installed.";;
-        255) echo "[ESC] key pressed.";;
-    esac
-fi
-
-if ! [ -x "$(command -v git)" ]; then
-    dialog --title "Install git" --yesno "git is not installed, do you want to install it?" 7 60
-    response=$?
-    case $response in
-        0) sudo apt-get install git;;
-        1) echo "git will not be installed.";;
-        255) echo "[ESC] key pressed.";;
-    esac
-fi
-
-# check the version of miguelgargallo/get-pocketbase-server in file v.pylar is the value, compared with 
+# Check the version of miguelgargallo/get-pocketbase-server in file v.pylar
+# TODO: Add your version checking logic here
